@@ -10,8 +10,12 @@ import (
 
 func TestURLString(t *testing.T) {
 	u := NewURL("a")
-	if str := u.String(); str != "a" {
+	if str := u.String(); str != "http://a" {
 		t.Fatalf("expected %q got %q", "a", str)
+	}
+	u = NewURL("http://b")
+	if str := u.String(); str != "http://b" {
+		t.Fatalf("expected %q got %q", "b", str)
 	}
 }
 

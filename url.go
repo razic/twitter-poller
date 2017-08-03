@@ -3,6 +3,7 @@ package main
 import (
 	"encoding/json"
 	"io/ioutil"
+	"strings"
 )
 
 // URL data struct
@@ -17,12 +18,16 @@ func NewURL(u string) *URL {
 
 // String gets the url string from a url
 func (u *URL) String() string {
-	return u.raw
+	if strings.Contains(u.raw, "://") {
+		return u.raw
+	}
+
+	return "http://" + u.raw
 }
 
 // Poll polls a url
 func (u *URL) Poll(getter Getter) (status Status, err error) {
-	resp, err := getter.Get(u.raw)
+	resp, err := getter.Get(u.String())
 
 	if err != nil {
 		return

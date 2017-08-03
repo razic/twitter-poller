@@ -1,7 +1,10 @@
 package main
 
 import (
+	"encoding/json"
 	"fmt"
+	"io/ioutil"
+	"log"
 	"net/http"
 	"os"
 	"sync"
@@ -43,7 +46,7 @@ func main() {
 		},
 	}
 	app.Action = func(c *cli.Context) error {
-		file, err := os.Open(c.String("file")) // open file for reading
+		file, err := os.Open(c.String("infile")) // open file for reading
 		if err != nil {
 			return cliErr(err)
 		}
@@ -70,7 +73,15 @@ func main() {
 		wg.Wait()
 		close(statuses)
 
-		fmt.Printf("%v\n", aggregator.Data)
+		// writes json to outfile
+		byt, err := json.Marshal(aggregator.Data)
+		if err != nil {
+			log.Printf("%v\n", err)
+		}
+		err = ioutil.WriteFile(c.String("outfile"), byt, 0644)
+		if err != nil {
+			log.Printf("%v\n", err)
+		}
 
 		return nil
 	}

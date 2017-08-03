@@ -1,17 +1,17 @@
 # twitter-poller
 
 `twitter-poller` polls a list of urls, reporting an aggregate of success count
-by application/version
+by application/version.
 
 ## Installation
 
 `twitter-poller` supports the following platforms:
 
-* Darwin (64 bit)
-* Linux (64 bit)
+* Darwin (amd64)
+* Linux (amd64)
 
-There are pre-built executables located in the `bin/` folder at the root of
-this repository.
+There are pre-built executables ready for usage located in the `bin/` folder at
+the root of this repository.
 
 ## Usage
 

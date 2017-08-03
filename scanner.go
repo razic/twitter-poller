@@ -19,6 +19,7 @@ func NewURLScanner(r io.Reader) *URLScanner {
 
 // Scan takes a channel of string, on which is passed each scanned token
 func (s *URLScanner) Scan(pollers chan Poller) {
+	defer close(pollers)
 	for s.s.Scan() {
 		pollers <- &URL{raw: s.s.Text()}
 	}

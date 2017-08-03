@@ -63,6 +63,7 @@ func main() {
 		}
 
 		wg.Wait()
+		close(statuses)
 		fmt.Printf("%v\n", aggregator.Data)
 
 		return nil

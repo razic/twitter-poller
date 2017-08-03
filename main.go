@@ -28,6 +28,7 @@ func main() {
 
 	app.Name = "twitter-poller"
 	app.Usage = usage
+	app.Version = "1.0.0"
 	app.Flags = []cli.Flag{
 		cli.StringFlag{
 			Name:  "infile,i",

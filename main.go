@@ -85,7 +85,7 @@ func main() {
 		}
 
 		// writes human readable output to stdout
-		fmt.Printf("%s\n", formatter.Format(aggregator.Data))
+		formatter.Format(os.Stdout, aggregator.Data)
 
 		return nil
 	}

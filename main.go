@@ -51,6 +51,7 @@ func main() {
 			return cliErr(err)
 		}
 
+		formatter := NewFormatter()    // formats output for human reading
 		aggregator := NewAggregator()  // aggregates statuses
 		client := &http.Client{}       // default http client
 		scanner := NewURLScanner(file) // url scanner for input file
@@ -82,6 +83,9 @@ func main() {
 		if err != nil {
 			log.Printf("%v\n", err)
 		}
+
+		// writes human readable output to stdout
+		fmt.Printf("%s\n", formatter.Format(aggregator.Data))
 
 		return nil
 	}

@@ -39,10 +39,11 @@ COMMANDS:
      help, h  Shows a list of commands or help for one command
 
 GLOBAL OPTIONS:
-   --file value     file containing newline delimited list of urls to poll (default: "servers.txt")
-   --pollers value  number of pollers to launch (default: 2)
-   --help, -h       show help
-   --version, -v    print the version
+   --infile value, -i value   file containing newline delimited list of urls to poll (default: "servers.txt")
+   --outfile value, -o value  file that machine-parseable results will get written to (default: "result.json")
+   --pollers value, -p value  number of pollers to launch (default: 2)
+   --help, -h                 show help
+   --version, -v              print the version
 ```
 
 ## Development

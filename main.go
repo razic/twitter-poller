@@ -27,9 +27,14 @@ func main() {
 	app.Usage = usage
 	app.Flags = []cli.Flag{
 		cli.StringFlag{
-			Name:  "file,f",
+			Name:  "infile,i",
 			Usage: "file containing newline delimited list of urls to poll",
 			Value: "servers.txt",
+		},
+		cli.StringFlag{
+			Name:  "outfile,o",
+			Usage: "file that machine-parseable results will get written to",
+			Value: "result.json",
 		},
 		cli.IntFlag{
 			Name:  "pollers,p",
@@ -64,6 +69,7 @@ func main() {
 
 		wg.Wait()
 		close(statuses)
+
 		fmt.Printf("%v\n", aggregator.Data)
 
 		return nil

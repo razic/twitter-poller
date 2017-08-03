@@ -70,8 +70,8 @@ func main() {
 			}()
 		}
 
-		wg.Wait()
-		close(statuses)
+		wg.Wait()       // wait until pollers have finished
+		close(statuses) // close the statuses channel
 
 		// writes json to outfile
 		byt, err := json.Marshal(aggregator.Data)
